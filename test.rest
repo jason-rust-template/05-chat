@@ -18,6 +18,8 @@ Content-Type: application/json
 }
 
 ### signin user (invalid)
+
+# @name signin
 POST http://localhost:6688/api/signin
 Content-Type: application/json
 
@@ -25,3 +27,9 @@ Content-Type: application/json
   "email": "alice@acme.org",
   "password": "123456"
 }
+
+@token = {{signin.response.body.token}}
+
+### get chat list
+GET http://localhost:6688/api/chat
+Authorization: Bearer {{token}}
